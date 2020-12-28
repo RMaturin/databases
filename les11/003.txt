@@ -1,0 +1,12 @@
+--В базе данных Redis подберите коллекцию для подсчета посещений с определенных IP-адресов
+
+HMSET ip_incom '172.16.28.15' 0 '192.168.1.1' 5 '213.180.204.11' 2
+
+HKEYS ip_incom
+
+HINCRBY ip_incom '172.16.28.15' 1
+HINCRBY ip_incom '192.168.1.1' 1
+HINCRBY ip_incom '255.255.255.0' 1
+
+HGETALL ip_incom
+
